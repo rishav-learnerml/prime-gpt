@@ -1,2 +1,2 @@
-# netflix-gpt
-Netflix with GPT features
+# Prime-gpt
+Amazon Prime with GPT features
