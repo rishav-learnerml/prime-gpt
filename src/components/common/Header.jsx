@@ -1,14 +1,19 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Search } from "lucide-react";
+import Dropdown from "../../utils/Dropdown";
+import user_avatar from "../../assets/user.svg";
+import { useState } from "react";
+
+const dropdownValues = {
+  Home: ["All", "Movies", "TV Shows"],
+  Store: ["All", "Rent", "Channels"],
+  Lang: ["En", "Hi", "Ben", "Es", "Ar"],
+};
 
 const Header = () => {
+  const [selectedLang, setSelectedLang]=useState("En")
   return (
-    <nav className="bg-slate-950 p-4">
-      <div className="flex w-10/12 justify-center">
+    <nav className="bg-slate-950 py-2">
+      <div className="flex w-10/12 justify-center mx-auto">
         <div className="w-13 pr-10 pt-1">
           <img
             src="https://m.media-amazon.com/images/G/01/digital/video/web/Logo-min.png"
@@ -16,26 +21,28 @@ const Header = () => {
             width={120}
           />
         </div>
-        <ul className="flex text-gray-400 text-lg font-semibold gap-12 ps-5">
+        <ul className="flex text-gray-400 text-lg font-semibold gap-8 ps-5">
           <li>
-            Home
-            <DropdownMenu className="bg-slate-900">
-              <DropdownMenuTrigger className="border-none">
-                🔽
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Dropdown name="Home" values={dropdownValues.Home} />
           </li>
-          <li>Store</li>
+          <li>
+            <Dropdown name="Store" values={dropdownValues.Home} />
+          </li>
           <li>LiveTV</li>
           <li>Categories</li>
         </ul>
-        <ul></ul>
+        <ul className="flex text-gray-400 text-lg font-semibold gap-8 ps-20">
+          <li>
+            <Search />
+          </li>
+          <li>Try for free</li>
+          <li>
+            <Dropdown name={selectedLang} values={dropdownValues.Lang} onLanguageChange={setSelectedLang}/>
+          </li>
+          <li>
+            <img src={user_avatar} alt="user-icn" width={35} />
+          </li>
+        </ul>
       </div>
     </nav>
   );
