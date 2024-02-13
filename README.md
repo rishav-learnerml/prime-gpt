@@ -2,7 +2,7 @@
 Amazon Prime with GPT features - Search Recommendations from ChatGPT
 
 # Tech-Stack:
-  -React
+  -React\n
   -Vite
   -TailwindCss
   -ShadCn
