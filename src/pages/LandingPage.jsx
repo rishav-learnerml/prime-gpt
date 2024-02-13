@@ -12,7 +12,7 @@ const LandingPage = () => {
           <Banner {...item} key={item.title} />
         ))}
       </div>
-      <div className="my-5 px-10 flex mx-auto">
+      <div className="my-5 px-10 flex mx-auto bg-white">
         <div className="w-[50%] p-5">
           <div className="text-5xl font-thin">
             Your favorite channels all in one place
@@ -25,7 +25,10 @@ const LandingPage = () => {
         </div>
         <div className="w-[50%] flex flex-wrap justify-center">
           {cardImgUrls?.map((imgUrl) => (
-            <div className="p-1" key={imgUrl}>
+            <div
+              className="p-1 cursor-pointer hover:scale-105 hover:shadow-lg"
+              key={imgUrl}
+            >
               <img src={imgUrl} alt="icon" width={200} />
             </div>
           ))}

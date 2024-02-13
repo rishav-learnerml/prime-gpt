@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/common/Layout";
 import { Suspense, lazy } from "react";
 import Shimmer from "../utils/Shimmer";
+import ErrorPage from "../pages/ErrorPage";
 
 const LandingPage = lazy(() => import("../pages/LandingPage"));
 const Login = lazy(() => import("../pages/Login"));
@@ -10,20 +11,23 @@ const Browse = lazy(() => import("../pages/Browse"));
 export const approuter = createBrowserRouter([
   {
     path: "login",
+    errorElement: <ErrorPage />,
     element: (
-      <Suspense fallback={Shimmer}>
+      <Suspense fallback={<Shimmer />}>
         <Login />
+        
       </Suspense>
     ),
   },
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: (
-          <Suspense fallback={Shimmer}>
+          <Suspense fallback={<Shimmer />}>
             <LandingPage />
           </Suspense>
         ),
@@ -32,7 +36,7 @@ export const approuter = createBrowserRouter([
       {
         path: "browse",
         element: (
-          <Suspense fallback={Shimmer}>
+          <Suspense fallback={<Shimmer />}>
             <Browse />
           </Suspense>
         ),
