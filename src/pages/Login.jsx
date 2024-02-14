@@ -2,15 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import login_bg from "../assets/login-bg.jpeg";
 import prime_logo from "../assets/prime-logo.svg";
 import { Button } from "../components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { checkValidData } from "../utils/constant/validate";
 import { userauth } from "../utils/constant/userauth";
 import { useDispatch } from "react-redux";
+import authChecker from "../utils/constant/authChecker";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    authChecker(dispatch, navigate);
+  }, []);
 
   const toggleSignUp = () => {
     setErrorMessage(null);
@@ -38,7 +43,6 @@ const Login = () => {
       userEmail,
       userPassword,
       setErrorMessage,
-      navigate,
       dispatch
     );
   };

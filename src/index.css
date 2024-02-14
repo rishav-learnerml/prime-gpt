@@ -6,6 +6,9 @@ button {
   border: none;
   outline: none;
 }
+ html{
+background: rgb(2, 6, 23);
+ }
 
 *::-webkit-scrollbar {
   width: 0px;

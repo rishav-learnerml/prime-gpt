@@ -14,7 +14,6 @@ export const userauth = (
   userEmail,
   userPassword,
   setErrorMessage,
-  navigate,
   dispatch
 ) => {
   //initialize firebase
@@ -42,7 +41,6 @@ export const userauth = (
               })
             );
             setErrorMessage(null);
-            navigate("/browse");
           })
           .catch((error) => {
             // An error occurred
@@ -69,7 +67,6 @@ export const userauth = (
         const user = userCredential.user;
         console.log(user, "sign in succesful !");
         setErrorMessage(null);
-        navigate("/browse");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -85,14 +82,13 @@ export const userauth = (
   }
 };
 
-export const userSignOut = (navigate) => {
+export const userSignOut = () => {
   firebaseInit();
   const auth = getAuth();
   signOut(auth)
     .then(() => {
       // Sign-out successful.
       console.log("Sign-out successful.");
-      navigate("/");
     })
     .catch((error) => {
       console.log("Sign-out unsuccessful.");

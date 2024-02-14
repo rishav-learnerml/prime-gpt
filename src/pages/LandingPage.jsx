@@ -3,12 +3,11 @@ import Banner from "../utils/Banner";
 import { FIRE_STICK_BANNER } from "../utils/constant/constants";
 import { Button } from "@/components/ui/button";
 import Footer from "../utils/Footer";
-import { useSelector } from "react-redux";
 
 const LandingPage = () => {
   return (
     <>
-      <div>
+      <div className="mt-3">
         {bannerContent?.map((item) => (
           <Banner {...item} key={item.title} />
         ))}
