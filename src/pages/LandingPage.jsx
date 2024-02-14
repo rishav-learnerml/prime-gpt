@@ -1,8 +1,9 @@
-import { bannerContent, cardImgUrls } from "../utils/MockData";
+import { bannerContent, cardImgUrls } from "../utils/constant/MockData";
 import Banner from "../utils/Banner";
-import { FIRE_STICK_BANNER } from "../utils/constants";
+import { FIRE_STICK_BANNER } from "../utils/constant/constants";
 import { Button } from "@/components/ui/button";
 import Footer from "../utils/Footer";
+import { useSelector } from "react-redux";
 
 const LandingPage = () => {
   return (

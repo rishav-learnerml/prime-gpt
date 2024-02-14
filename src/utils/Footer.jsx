@@ -1,5 +1,5 @@
 import React from "react";
-import { LOGO_FOOTER } from "./constants";
+import { LOGO_FOOTER } from "./constant/constants";
 
 const Footer = () => {
   return (

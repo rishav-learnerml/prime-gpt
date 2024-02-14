@@ -15,7 +15,6 @@ export const approuter = createBrowserRouter([
     element: (
       <Suspense fallback={<Shimmer />}>
         <Login />
-        
       </Suspense>
     ),
   },

@@ -16,6 +16,20 @@ export const bannerContent = [
   },
 ];
 
+export const dropdownValues = {
+  Home: ["All", "Movies", "TV Shows"],
+  Store: ["All", "Rent", "Channels"],
+  Lang: ["En", "Hi", "Ben", "Es", "Ar"],
+  MyStuff: ["All", "Watchlist", "Rentals"],
+  userProfile: [
+    "Account & Settings",
+    "Prime Benefits",
+    "Help",
+    "Settings",
+    "Sign Out",
+  ],
+};
+
 export const cardImgUrls = [
   "https://m.media-amazon.com/images/G/31/AmazonVideo/2021/Channels/MLP/LionsgatePlay-426X2946_V1.jpg",
   "https://m.media-amazon.com/images/G/31/AmazonVideo/2021/Channels/MLP/426x294_Discovery.jpg",
