@@ -8,7 +8,7 @@ const authChecker = (dispatch, navigate) => {
   console.log(location);
   firebaseInit();
   const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
+  const unsubscribeEL = onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log(user, "uuuu");
       //user signed in
@@ -27,6 +27,8 @@ const authChecker = (dispatch, navigate) => {
       if (!(currentRoute === "/" || currentRoute === "/login")) navigate("/");
     }
   });
+
+  return unsubscribeEL;
 };
 
 export default authChecker;

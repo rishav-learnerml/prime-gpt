@@ -17,14 +17,15 @@ const Header = () => {
   const userDetails = useSelector((store) => store.user.currentUser);
 
   useEffect(() => {
-    authChecker(dispatch, navigate);
+    const unsubscribe = authChecker(dispatch, navigate);
+    () => unsubscribe();
   }, []);
 
   return (
     <nav className="bg-slate-950 py-2 sticky top-3 z-10 w-[80%] mx-auto rounded-lg">
       <div className="flex justify-center">
         <div className="w-13 pr-10 pt-1">
-          <Link to="/">
+          <Link to={userDetails ? "/browse" : "/"}>
             <img
               src="https://m.media-amazon.com/images/G/01/digital/video/web/Logo-min.png"
               alt="Prime Video"

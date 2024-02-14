@@ -14,7 +14,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    authChecker(dispatch, navigate);
+    const unsubscribe = authChecker(dispatch, navigate);
+    () => unsubscribe();
   }, []);
 
   const toggleSignUp = () => {
