@@ -3,15 +3,19 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { firebaseInit } from "./FirebaseConfig";
+import { addUser } from "../../store/userSlice";
 
 export const userauth = (
   isSignUp,
+  userName,
   userEmail,
   userPassword,
   setErrorMessage,
-  navigate
+  navigate,
+  dispatch
 ) => {
   //initialize firebase
   firebaseInit();
@@ -23,9 +27,28 @@ export const userauth = (
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        updateProfile(user, {
+          displayName: userName,
+          photoURL: "https://example.com/jane-q-user/profile.jpg",
+        })
+          .then(() => {
+            // Profile updated!
+            const { uid, email, displayName } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid,
+                email,
+                displayName,
+              })
+            );
+            setErrorMessage(null);
+            navigate("/browse");
+          })
+          .catch((error) => {
+            // An error occurred
+            setErrorMessage(error);
+          });
         console.log(user, "sign up succesful !");
-        setErrorMessage(null);
-        navigate("/browse");
       })
       .catch((error) => {
         const errorCode = error.code;

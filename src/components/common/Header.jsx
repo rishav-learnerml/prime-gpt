@@ -11,8 +11,9 @@ const Header = () => {
   const [selectedLang, setSelectedLang] = useState("En");
   const userDetails = useSelector((store) => store.user.currentUser);
   console.log(userDetails);
+
   return (
-    <nav className="bg-slate-950 py-2">
+    <nav className="bg-slate-950 py-2 sticky top-0 z-10">
       <div className="flex w-10/12 justify-center mx-auto">
         <div className="w-13 pr-10 pt-1">
           <Link to="/">
@@ -55,7 +56,7 @@ const Header = () => {
             {userDetails ? (
               <div className="flex">
                 <span className="text-gray-400 text-lg font-semibold pr-4">
-                  Guddu Vaiya
+                  {userDetails?.displayName}
                 </span>
                 <img src={loggedin_user_avatar} alt="user-icn" width={35} />
                 <Dropdown values={dropdownValues.userProfile} />

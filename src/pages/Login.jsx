@@ -5,10 +5,12 @@ import { Button } from "../components/ui/button";
 import { useState } from "react";
 import { checkValidData } from "../utils/constant/validate";
 import { userauth } from "../utils/constant/userauth";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const toggleSignUp = () => {
     setErrorMessage(null);
@@ -32,12 +34,13 @@ const Login = () => {
     //sign in/sign up -- firebase
     userauth(
       isSignUp,
+      userName,
       userEmail,
       userPassword,
       setErrorMessage,
-      navigate
+      navigate,
+      dispatch
     );
-
   };
 
   return (
