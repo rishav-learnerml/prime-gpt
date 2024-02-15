@@ -8,7 +8,7 @@ const Banner = ({ title, description, buttonText, bannerImg }) => {
 
   return (
     <div
-      className="text-white pb-[20%] pt-[3%] px-10"
+      className="text-white pb-[15%] pt-[3%] px-10 bg-cover"
       style={{
         backgroundImage: `linear-gradient( to right, #000 40%, transparent 58% ), url(${bannerImg})`,
       }}
