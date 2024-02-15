@@ -12,7 +12,7 @@ const LandingPage = () => {
           <Banner {...item} key={item.title} />
         ))}
       </div>
-      <div className="my-5 px-10 flex mx-auto bg-white">
+      <div className="py-4 px-10 flex mx-auto bg-white">
         <div className="w-[50%] p-5">
           <div className="text-5xl font-thin">
             Your favorite channels all in one place
