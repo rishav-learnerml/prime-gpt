@@ -2,30 +2,24 @@ import { Search } from "lucide-react";
 import Dropdown from "../../utils/Dropdown";
 import user_avatar from "../../assets/user.svg";
 import loggedin_user_avatar from "../../assets/loggedin-user-avatar.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { dropdownValues } from "../../utils/constant/MockData";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import authChecker from "../../utils/constant/authChecker";
+import useAuthChecker from "../../utils/hooks/useAuthChecker";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [selectedLang, setSelectedLang] = useState("En");
   const userDetails = useSelector((store) => store.user.currentUser);
 
-  useEffect(() => {
-    const unsubscribe = authChecker(dispatch, navigate);
-    () => unsubscribe();
-  }, []);
+  //check for auth
+  useAuthChecker();
 
   return (
     <nav className="bg-slate-950 py-2 sticky top-3 z-10 w-[80%] mx-auto rounded-lg">
       <div className="flex justify-center">
         <div className="w-13 pr-10 pt-1">
-          <Link to={userDetails ? "/browse" : "/"}>
+          <Link to="/">
             <img
               src="https://m.media-amazon.com/images/G/01/digital/video/web/Logo-min.png"
               alt="Prime Video"

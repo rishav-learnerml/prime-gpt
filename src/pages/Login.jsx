@@ -1,22 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import login_bg from "../assets/login-bg.jpeg";
 import prime_logo from "../assets/prime-logo.svg";
 import { Button } from "../components/ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { checkValidData } from "../utils/constant/validate";
 import { userauth } from "../utils/constant/userauth";
 import { useDispatch } from "react-redux";
-import authChecker from "../utils/constant/authChecker";
+import useAuthChecker from "../utils/hooks/useAuthChecker";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const unsubscribe = authChecker(dispatch, navigate);
-    () => unsubscribe();
-  }, []);
+  //check for auth
+  useAuthChecker();
 
   const toggleSignUp = () => {
     setErrorMessage(null);
