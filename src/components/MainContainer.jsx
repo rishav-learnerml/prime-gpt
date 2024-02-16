@@ -14,7 +14,7 @@ import {
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (!movies) return;
-  const trailerMovies = movies.slice(6);
+  const trailerMovies = movies.slice(0, 5);
   console.log(trailerMovies, "main");
 
   return (
@@ -28,9 +28,10 @@ const MainContainer = () => {
         ]}
       >
         <CarouselContent>
-          {trailerMovies?.map(
-            ({ adult, title, original_language, vote_average, id }) => (
-              <CarouselItem key={id}>
+          {trailerMovies?.map((movie, index) => {
+            const { adult, title, original_language, vote_average, id } = movie;
+            return (
+              <CarouselItem key={index}>
                 <div className="p-1">
                   <VideoTitle
                     title={title}
@@ -38,11 +39,11 @@ const MainContainer = () => {
                     isAdult={adult}
                     rating={vote_average}
                   />
-                  <VideoBackground movieId={id} />
+                  <VideoBackground movieId={id} currentVideo={index} />
                 </div>
               </CarouselItem>
-            )
-          )}
+            );
+          })}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

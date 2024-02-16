@@ -13,7 +13,7 @@ const VideoTitle = ({ title, language, isAdult, rating }) => {
   });
 
   return (
-    <div className="px-20 py-10 absolute bg-gradient-to-r from-black via-neutral-800 to-transparent w-screen aspect-video">
+    <div className="px-20 py-10 absolute bg-gradient-to-r from-black from-50% gradien w-screen aspect-video">
       <div className="flex">
         <span className="text-lg pe-2">IMDB {rating?.toFixed(1)}</span>{" "}
         <Star
