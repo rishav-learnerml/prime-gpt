@@ -10,11 +10,32 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../components/ui/carousel";
+import { useEffect, useState } from "react";
+import { Circle } from "lucide-react";
 
 const MainContainer = () => {
+  const [api, setApi] = useState();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(api, "api");
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      console.log("current");
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (!movies) return;
-  const trailerMovies = movies.slice(0, 5);
+  const trailerMovies = movies.slice(0, 6);
   console.log(trailerMovies, "main");
 
   return (
@@ -26,20 +47,41 @@ const MainContainer = () => {
             delay: 15000,
           }),
         ]}
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        setApi={setApi}
       >
         <CarouselContent>
           {trailerMovies?.map((movie, index) => {
-            const { adult, title, original_language, vote_average, id } = movie;
+            const {
+              adult,
+              title,
+              original_language,
+              vote_average,
+              id,
+              backdrop_path,
+            } = movie;
+
             return (
-              <CarouselItem key={index}>
-                <div className="p-1">
+              <CarouselItem key={id}>
+                <div
+                  className={`p-1 ml-5 ${current !== index && "opacity-30"}`}
+                >
                   <VideoTitle
                     title={title}
                     language={original_language}
                     isAdult={adult}
                     rating={vote_average}
+                    thumbnail={backdrop_path}
+                    currentIndex={current}
                   />
-                  <VideoBackground movieId={id} currentVideo={index} />
+                  <VideoBackground
+                    movieId={id}
+                    currentIndex={current}
+                    videoIndex={index}
+                  />
                 </div>
               </CarouselItem>
             );
@@ -48,6 +90,15 @@ const MainContainer = () => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+      <div className="py-5 text-center flex justify-center text-sm text-muted-foreground gap-4">
+        {Array.from({ length: count }).map((_, index) =>
+          index === current ? (
+            <Circle size={10} fill="#ffffff" key={index} />
+          ) : (
+            <Circle size={10} fill="#808080" color="#808080" key={index} />
+          )
+        )}
+      </div>
     </div>
   );
 };

@@ -6,11 +6,11 @@ button {
   border: none;
   outline: none;
 }
- html{
-background: #020617;
- }
+html {
+  background: #020617;
+}
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   width: 0px;
   margin-right: 10%;
-}
+} */

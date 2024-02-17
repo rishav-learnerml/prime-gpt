@@ -20,7 +20,10 @@ export const API_OPTIONS = {
   },
 };
 export const TMDB_URL = "https://api.themoviedb.org/3/movie/";
-export const VIDEO_LIST_CONFIG = "now_playing?page=1";
+export const TMDB_INDIA_URL = "https://api.themoviedb.org/3/discover/movie?";
+export const VIDEO_LIST_CONFIG =
+  "?region=IN&language=hi-IN&release_date.gte=2017-08-01&with_original_language=hi";
 export const TRAILER_CONFIG = "/videos?language=en-US";
+export const TMDB_MOVIE_IMAGES = "/images";
 export const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/";
 export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/original";

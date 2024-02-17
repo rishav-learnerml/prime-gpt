@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import {
   API_OPTIONS,
+  TMDB_INDIA_URL,
   TMDB_URL,
   VIDEO_LIST_CONFIG,
 } from "../../utils/constant/constants";
@@ -12,9 +13,8 @@ const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
   //api call
   const getNowPlayingMovies = async () => {
-    const data = await fetch(TMDB_URL + VIDEO_LIST_CONFIG, API_OPTIONS);
+    const data = await fetch(TMDB_INDIA_URL + VIDEO_LIST_CONFIG, API_OPTIONS);
     const json = await data.json();
-    console.log(json, "movie data");
     dispatch(addNowPlayingMovies(json?.results));
   };
 
