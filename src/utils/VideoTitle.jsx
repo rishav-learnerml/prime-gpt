@@ -18,12 +18,13 @@ const VideoTitle = ({
   currentIndex,
 }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
-  const isTrailerAvailable = trailer[currentIndex]?.trailer;
+  console.log(trailer, "trailer h mere dost");
+  const isTrailerAvailable = trailer[currentIndex]?.name;
   const movieLogo = trailer[currentIndex]?.movie_logo ? (
     <img
       src={TMDB_MOVIE_POSTER + trailer[currentIndex]?.movie_logo}
       alt={title}
-      className="w-48"
+      className="w-48 max-h-[120px]"
     />
   ) : (
     <div>{title}</div>
@@ -42,7 +43,6 @@ const VideoTitle = ({
     if (!isTrailerAvailable) return; //if trailer is not availlable skip
 
     const timer = setTimeout(() => {
-      console.log("first");
       setBackgroundImage("");
     }, 3000);
     return () => {
@@ -61,13 +61,18 @@ const VideoTitle = ({
     >
       <div>
         <div className="flex">
-          <span className="text-lg pe-2">IMDB {rating?.toFixed(1)}</span>{" "}
+          <span className="flex text-lg pe-2">
+            <div className="bg-yellow-500 rounded-sm px-1 text-black font-extrabold me-2 ">
+              TMDb
+            </div>{" "}
+            {rating?.toFixed(1)}
+          </span>{" "}
           <Star
-            size={20}
+            size={15}
             color="#f4d50b"
             fill="#f4d50b"
             strokeWidth={3}
-            className="mt-1"
+            className="mt-[6px]"
           />
         </div>
         <div className="max-w-fit">

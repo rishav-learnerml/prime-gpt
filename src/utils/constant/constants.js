@@ -20,10 +20,15 @@ export const API_OPTIONS = {
   },
 };
 export const TMDB_URL = "https://api.themoviedb.org/3/movie/";
-export const TMDB_INDIA_URL = "https://api.themoviedb.org/3/discover/movie?";
+export const TMDB_DISCOVER_URL = "https://api.themoviedb.org/3/discover/movie?";
 export const VIDEO_LIST_CONFIG =
   "?region=IN&language=hi-IN&release_date.gte=2017-08-01&with_original_language=hi";
 export const TRAILER_CONFIG = "/videos?language=en-US";
 export const TMDB_MOVIE_IMAGES = "/images";
+export const TMDB_MOVIE_LATEST = "popular?page=1";
+export const TMDB_MOVIE_TOP_RATED = "top_rated?page=1";
+export const TMDB_MOVIE_UPCOMING = "upcoming?page=1";
+export const TMDB_MOVIE_HORROR = "&with_genres=27";
 export const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/";
 export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/original";
+export const TMDB_MOVIE_CARD = "https://image.tmdb.org/t/p/w500";

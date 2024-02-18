@@ -1,23 +1,24 @@
 import { useEffect } from "react";
 import {
   API_OPTIONS,
+  TMDB_URL,
+  TMDB_MOVIE_HORROR,
   TMDB_DISCOVER_URL,
-  VIDEO_LIST_CONFIG,
-} from "../../utils/constant/constants";
+} from "../constant/constants";
 import { useDispatch } from "react-redux";
-import { addNowPlayingMovies } from "../../store/moviesSlice";
+import { addHorrorMovies } from "../../store/moviesSlice";
 import getMoviePoster from "../constant/getMoviePoster";
 
-const useNowPlayingMovies = () => {
+const useHorrorMovies = () => {
   //fetch data from tmdb api and update store
   const dispatch = useDispatch();
   //api call
-  const getNowPlayingMovies = async () => {
+  const getHorrorMovies = async () => {
     try {
-      const data = await fetch(TMDB_DISCOVER_URL + VIDEO_LIST_CONFIG, API_OPTIONS);
+      const data = await fetch(TMDB_DISCOVER_URL + TMDB_MOVIE_HORROR, API_OPTIONS);
       const json = await data.json();
       json?.results?.forEach((movie) =>
-        getMoviePoster(dispatch, movie, addNowPlayingMovies)
+        getMoviePoster(dispatch, movie, addHorrorMovies)
       );
     } catch (error) {
       console.error("Failed to fetch!", error);
@@ -25,8 +26,8 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    getNowPlayingMovies();
+    getHorrorMovies();
   }, []);
 };
 
-export default useNowPlayingMovies;
+export default useHorrorMovies;

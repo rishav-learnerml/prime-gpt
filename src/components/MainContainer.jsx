@@ -19,7 +19,6 @@ const MainContainer = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(api, "api");
     if (!api) {
       return;
     }
@@ -28,7 +27,6 @@ const MainContainer = () => {
     setCurrent(api.selectedScrollSnap());
 
     api.on("select", () => {
-      console.log("current");
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
@@ -36,10 +34,9 @@ const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (!movies) return;
   const trailerMovies = movies.slice(0, 6);
-  console.log(trailerMovies, "main");
 
   return (
-    <div className="text-white mx-auto ms-6 w-[95%] mt-5">
+    <div className="text-white px-4 mx-auto w-[95%] mt-5">
       <Carousel
         className="w-full"
         plugins={[

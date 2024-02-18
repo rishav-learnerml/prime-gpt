@@ -1,10 +1,9 @@
 import MainContainer from "../components/MainContainer";
 import SecondaryContainer from "../components/SecondaryContainer";
-import useNowPlayingMovies from "../utils/hooks/useNowPlayingMovies";
+import Footer from "../utils/Footer";
 
 const Browse = () => {
   //fetches now playing movies and updates the store
-  useNowPlayingMovies();
 
   return (
     <div>
@@ -18,6 +17,7 @@ const Browse = () => {
     */}
       <MainContainer />
       <SecondaryContainer />
+      <Footer />
     </div>
   );
 };

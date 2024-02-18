@@ -11,13 +11,11 @@ const useAuthChecker = () => {
   const { pathname: currentRoute } = useLocation();
 
   useEffect(() => {
-    console.log(location);
     firebaseInit();
     const auth = getAuth();
 
     const unsubscribeEL = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user, "uuuu");
         //user signed in
         const { uid, email, displayName } = user;
         dispatch(

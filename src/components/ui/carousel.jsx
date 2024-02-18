@@ -170,7 +170,7 @@ const CarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "absolute  h-20 w-20 rounded-full bg-transparent hover:bg-transparent cursor-pointer",
+          "absolute w-8 rounded-full bg-transparent hover:bg-transparent cursor-pointer h-full  opacity-0 hover:opacity-100 transition ease-in-out delay-150",
           orientation === "horizontal"
             ? "-left-12 top-1/2 -translate-y-1/2"
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -180,7 +180,11 @@ const CarouselPrevious = React.forwardRef(
         onClick={scrollPrev}
         {...props}
       >
-        <ChevronLeft color="#ffffff" strokeWidth={3} className="h-8 w-8" />
+        <ChevronLeft
+          color="#ffffff"
+          strokeWidth={3}
+          className="h-8 w-8 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+        />
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -198,7 +202,7 @@ const CarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-8 w-8 rounded-full bg-transparent hover:bg-transparent cursor-pointer",
+          "absolute w-8 rounded-full bg-transparent hover:bg-transparent cursor-pointer h-full  opacity-0 hover:opacity-100 transition ease-in-out delay-150",
           orientation === "horizontal"
             ? "-right-12 top-1/2 -translate-y-1/2"
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -212,7 +216,7 @@ const CarouselNext = React.forwardRef(
           size={28}
           color="#ffffff"
           strokeWidth={3}
-          className="h-8 w-8"
+          className="h-8 w-8 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
         />
 
         <span className="sr-only">Next slide</span>

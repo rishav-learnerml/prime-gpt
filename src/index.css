@@ -10,7 +10,9 @@ html {
   background: #020617;
 }
 
-/* *::-webkit-scrollbar {
+.hide-scroll::-webkit-scrollbar {
   width: 0px;
   margin-right: 10%;
-} */
+}
+
+

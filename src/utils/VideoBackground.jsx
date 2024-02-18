@@ -4,7 +4,6 @@ import { YOUTUBE_EMBED_URL } from "./constant/constants";
 
 const VideoBackground = ({ movieId, currentIndex, videoIndex }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
-  console.log(trailer, "ttt");
 
   useMovieTrailer(movieId);
 
@@ -14,7 +13,7 @@ const VideoBackground = ({ movieId, currentIndex, videoIndex }) => {
         className="w-screen h-full ps-[37%] aspect-auto scale-125"
         src={
           YOUTUBE_EMBED_URL +
-          trailer[videoIndex]?.trailer?.key +
+          trailer[videoIndex]?.key +
           `?showinfo=0&autoplay=${
             currentIndex === videoIndex
           }&mute=1&controls=0&loop=1&rel=0&autohide=1&start=5`

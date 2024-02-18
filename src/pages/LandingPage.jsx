@@ -55,7 +55,7 @@ const LandingPage = () => {
           </Button>
         </div>
       </div>
-      <div className="flex justify-center bg-neutral-800 ">
+      <div className=" bg-neutral-800 ">
         <Footer />
       </div>
     </>

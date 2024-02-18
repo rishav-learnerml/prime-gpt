@@ -1,23 +1,24 @@
 import { useEffect } from "react";
 import {
   API_OPTIONS,
-  TMDB_DISCOVER_URL,
-  VIDEO_LIST_CONFIG,
-} from "../../utils/constant/constants";
+  TMDB_URL,
+  TMDB_MOVIE_TOP_RATED,
+  TMDB_MOVIE_UPCOMING,
+} from "../constant/constants";
 import { useDispatch } from "react-redux";
-import { addNowPlayingMovies } from "../../store/moviesSlice";
+import { addUpcomingMovies } from "../../store/moviesSlice";
 import getMoviePoster from "../constant/getMoviePoster";
 
-const useNowPlayingMovies = () => {
+const useUpcoming = () => {
   //fetch data from tmdb api and update store
   const dispatch = useDispatch();
   //api call
-  const getNowPlayingMovies = async () => {
+  const getUpcomingMovies = async () => {
     try {
-      const data = await fetch(TMDB_DISCOVER_URL + VIDEO_LIST_CONFIG, API_OPTIONS);
+      const data = await fetch(TMDB_URL + TMDB_MOVIE_UPCOMING, API_OPTIONS);
       const json = await data.json();
       json?.results?.forEach((movie) =>
-        getMoviePoster(dispatch, movie, addNowPlayingMovies)
+        getMoviePoster(dispatch, movie, addUpcomingMovies)
       );
     } catch (error) {
       console.error("Failed to fetch!", error);
@@ -25,8 +26,8 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    getNowPlayingMovies();
+    getUpcomingMovies();
   }, []);
 };
 
-export default useNowPlayingMovies;
+export default useUpcoming;
