@@ -32,19 +32,15 @@ const SecondaryContainer = () => {
       -genres
       */}
 
-      <>
-        {nowPlayingMovies && (
-          <MovieList title="Now Playing" movies={nowPlayingMovies} />
-        )}
-        {latestMovies && <MovieList title="Popular" movies={latestMovies} />}
-        {topRatedMovies && (
-          <MovieList title="Top Rated" movies={topRatedMovies} />
-        )}
-        {upcomingMovies && (
-          <MovieList title="Upcoming" movies={upcomingMovies} />
-        )}
-        {horrorMovies && <MovieList title="Horror" movies={horrorMovies} />}
-      </>
+      {nowPlayingMovies && (
+        <MovieList title="Now Playing" movies={nowPlayingMovies} />
+      )}
+      {latestMovies && <MovieList title="Popular" movies={latestMovies} />}
+      {topRatedMovies && (
+        <MovieList title="Top Rated" movies={topRatedMovies} />
+      )}
+      {upcomingMovies && <MovieList title="Upcoming" movies={upcomingMovies} />}
+      {horrorMovies && <MovieList title="Horror" movies={horrorMovies} />}
     </div>
   );
 };

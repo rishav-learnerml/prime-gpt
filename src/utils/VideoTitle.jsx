@@ -18,7 +18,6 @@ const VideoTitle = ({
   currentIndex,
 }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
-  console.log(trailer, "trailer h mere dost");
   const isTrailerAvailable = trailer[currentIndex]?.name;
   const movieLogo = trailer[currentIndex]?.movie_logo ? (
     <img
@@ -52,7 +51,7 @@ const VideoTitle = ({
 
   return (
     <div
-      className="px-20 py-10 absolute bg-gradient-to-r from-black from-40% gradien w-screen aspect-video z-20"
+      className="px-20 py-10 absolute bg-gradient-to-r from-black from-40% gradien w-screen aspect-video z-10"
       style={{
         background: `linear-gradient(to right, black ${
           backgroundImage ? "20%" : "40%"
@@ -84,7 +83,7 @@ const VideoTitle = ({
             <span className="flex text-lg">
               <Check
                 size={20}
-                strokeWidth={3}
+                strokeWidth={5}
                 color="#000000"
                 className="bg-sky-500 rounded-full p-1 me-2 mt-1"
               />

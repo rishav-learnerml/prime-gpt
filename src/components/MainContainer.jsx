@@ -12,6 +12,8 @@ import {
 } from "../components/ui/carousel";
 import { useEffect, useState } from "react";
 import { Circle } from "lucide-react";
+import Shimmer from "../utils/Shimmer";
+import { Skeleton } from "./ui/skeleton";
 
 const MainContainer = () => {
   const [api, setApi] = useState();
@@ -32,8 +34,9 @@ const MainContainer = () => {
   }, [api]);
 
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  if (!movies) return;
   const trailerMovies = movies.slice(0, 6);
+  if (!trailerMovies.length)
+    return <Skeleton className="h-96 w-[90vw] rounded-xl mx-auto mt-3" />;
 
   return (
     <div className="text-white px-4 mx-auto w-[95%] mt-5">
