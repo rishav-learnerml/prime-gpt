@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MovieCard from "./MovieCard";
 import {
   Carousel,
@@ -10,12 +10,14 @@ import {
 import ShimmerCards from "./ShimmerCards";
 
 const MovieList = ({ title, movies }) => {
+  const [showInfo, setShowInfo] = useState(-1);
+
   if (!movies.length) {
     return <ShimmerCards />;
   }
   return (
     <div className="mb-10 mx-16">
-      <div>
+      <div className="hover:relative hover:z-10">
         <h1 className="text-white font-semibold text-xl py-4">{title}</h1>
         <div className="hide-scroll">
           <Carousel
@@ -23,16 +25,18 @@ const MovieList = ({ title, movies }) => {
               align: "start",
               // loop: true,
             }}
-            className="w-full"
+            className="w-full h-[20vh]"
           >
-            <CarouselContent className="">
-              {movies?.slice(6)?.map((movie) => {
+            <CarouselContent>
+              {movies?.slice(6)?.map((movie, index) => {
                 return (
                   <CarouselItem
                     key={movie.id}
-                    className="md:basis-1/3 lg:basis-1/5"
+                    className={`md:basis-1/3 lg:basis-1/5 relative ${
+                      showInfo === index ? "h-[55vh]" : "h-[20vh]"
+                    }`}
                   >
-                    <div className="p-1">
+                    <div className={`p-1`}>
                       <MovieCard
                         posterPath={movie?.backdrop_path}
                         title={movie?.title}
@@ -40,6 +44,9 @@ const MovieList = ({ title, movies }) => {
                         description={movie?.overview}
                         isAdult={movie?.adult}
                         releaseDate={movie?.release_date?.split("-")?.[0]}
+                        setShowInfo={setShowInfo}
+                        showInfo={showInfo}
+                        index={index}
                       />
                     </div>
                   </CarouselItem>

@@ -75,7 +75,14 @@ const VideoTitle = ({
           />
         </div>
         <div className="max-w-fit">
-          <h1 className="text-6xl pt-5 pb-1">{movieLogo}</h1>
+          <h1
+            className="text-6xl mt-5 pb-1 rounded-lg"
+            style={{
+              background: `linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)), #ffffff`,
+            }}
+          >
+            {movieLogo}
+          </h1>
           <p className="text-center">{languageNames.of(language)}</p>
         </div>
         <div className="mt-12 flex">

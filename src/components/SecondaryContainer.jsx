@@ -22,7 +22,7 @@ const SecondaryContainer = () => {
   const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
   const horrorMovies = useSelector((store) => store.movies.horrorMovies);
   return (
-    <div>
+    <div className="relative overflow-auto">
       {/*
           MovieList
             -moviecard *n
@@ -33,14 +33,21 @@ const SecondaryContainer = () => {
       */}
 
       {nowPlayingMovies && (
-        <MovieList title="Now Playing" movies={nowPlayingMovies} />
+        <MovieList title="Dil Hai Hindustani" movies={nowPlayingMovies} />
       )}
       {latestMovies && <MovieList title="Popular" movies={latestMovies} />}
       {topRatedMovies && (
-        <MovieList title="Top Rated" movies={topRatedMovies} />
+        <div className="relative -z-1">
+
+          <MovieList title="Top Rated" movies={topRatedMovies} />
+        </div>
       )}
       {upcomingMovies && <MovieList title="Upcoming" movies={upcomingMovies} />}
-      {horrorMovies && <MovieList title="Horror" movies={horrorMovies} />}
+      {horrorMovies && (
+        <div className="mb-80">
+          <MovieList title="Horror" movies={horrorMovies} />
+        </div>
+      )}
     </div>
   );
 };
