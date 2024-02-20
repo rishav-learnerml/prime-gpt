@@ -25,7 +25,7 @@ const MovieList = ({ title, movies }) => {
               align: "start",
               // loop: true,
             }}
-            className="w-full h-[20vh]"
+            className="w-full h-[20vh] overflow-visible"
           >
             <CarouselContent>
               {movies?.slice(6)?.map((movie, index) => {
@@ -33,7 +33,7 @@ const MovieList = ({ title, movies }) => {
                   <CarouselItem
                     key={movie.id}
                     className={`md:basis-1/3 lg:basis-1/5 relative ${
-                      showInfo === index ? "h-[55vh]" : "h-[20vh]"
+                      showInfo === index ? "h-[60vh]" : "h-[20vh]"
                     }`}
                   >
                     <div className={`p-1`}>

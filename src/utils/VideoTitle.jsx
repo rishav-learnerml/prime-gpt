@@ -23,7 +23,7 @@ const VideoTitle = ({
     <img
       src={TMDB_MOVIE_POSTER + trailer[currentIndex]?.movie_logo}
       alt={title}
-      className="w-48 max-h-[120px]"
+      className="w-48 md:max-h-[120px] lg:max-w-[80%] lg:ps-10"
     />
   ) : (
     <div>{title}</div>
@@ -51,7 +51,7 @@ const VideoTitle = ({
 
   return (
     <div
-      className="px-20 py-10 absolute bg-gradient-to-r from-black from-40% gradien w-screen aspect-video z-10"
+      className="px-20 py-10 absolute bg-gradient-to-r from-black from-40% w-screen aspect-video z-10"
       style={{
         background: `linear-gradient(to right, black ${
           backgroundImage ? "20%" : "40%"
@@ -76,16 +76,16 @@ const VideoTitle = ({
         </div>
         <div className="max-w-fit">
           <h1
-            className="text-6xl mt-5 pb-1 rounded-lg"
+            className="text-6xl mt-5 p-1 rounded-lg mb-1"
             style={{
-              background: `linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)), #ffffff`,
+              background: `linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)), #808080`,
             }}
           >
             {movieLogo}
           </h1>
           <p className="text-center">{languageNames.of(language)}</p>
         </div>
-        <div className="mt-12 flex">
+        <div className="mt-12 lg:mt-6 flex">
           {isTrailerAvailable ? (
             <span className="flex text-lg">
               <Check

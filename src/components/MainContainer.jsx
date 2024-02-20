@@ -12,7 +12,6 @@ import {
 } from "../components/ui/carousel";
 import { useEffect, useState } from "react";
 import { Circle } from "lucide-react";
-import Shimmer from "../utils/Shimmer";
 import { Skeleton } from "./ui/skeleton";
 
 const MainContainer = () => {

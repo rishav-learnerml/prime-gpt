@@ -10,7 +10,7 @@ const VideoBackground = ({ movieId, currentIndex, videoIndex }) => {
   return (
     <div className="w-screen h-[50vh] text-5xl text-white cursor-pointer aspect-auto overflow-hidden">
       <iframe
-        className="w-screen h-full ps-[37%] aspect-auto scale-125"
+        className="w-screen h-full ps-[37%] md:ps-[25%] aspect-auto scale-125 md:scale-150"
         src={
           YOUTUBE_EMBED_URL +
           trailer[videoIndex]?.key +
