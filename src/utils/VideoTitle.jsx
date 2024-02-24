@@ -23,7 +23,7 @@ const VideoTitle = ({
     <img
       src={TMDB_MOVIE_POSTER + trailer[currentIndex]?.movie_logo}
       alt={title}
-      className="w-48 md:max-h-[120px] lg:max-w-[80%] lg:ps-10"
+      className="w-72 md:max-h-[120px] lg:max-w-[80%]"
     />
   ) : (
     <div>{title}</div>
@@ -65,7 +65,7 @@ const VideoTitle = ({
               TMDb
             </div>{" "}
             {rating?.toFixed(1)}
-          </span>{" "}
+          </span>
           <Star
             size={15}
             color="#f4d50b"
@@ -75,12 +75,7 @@ const VideoTitle = ({
           />
         </div>
         <div className="max-w-fit">
-          <h1
-            className="text-6xl mt-5 p-1 rounded-lg mb-1"
-            style={{
-              background: `linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)), #808080`,
-            }}
-          >
+          <h1 className="text-6xl mt-5 py-2 rounded-lg mb-1 bg-gradient-to-r from-transparent via-sky-600 to-transparent">
             {movieLogo}
           </h1>
           <p className="text-center">{languageNames.of(language)}</p>

@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import MovieList from "../utils/MovieList";
 import useLatestMovies from "../utils/hooks/useLatestMovies";
 import useTopRated from "../utils/hooks/useTopRated";
-import useNowPlayingMovies from "../utils/hooks/useNowPlayingMovies";
 import useUpcoming from "../utils/hooks/useUpcoming";
 import useHorrorMovies from "../utils/hooks/useHorrorMovies";
 
@@ -10,7 +9,6 @@ const SecondaryContainer = () => {
   //subscribing to store --> only what is required
   useLatestMovies();
   useTopRated();
-  useNowPlayingMovies();
   useUpcoming();
   useHorrorMovies();
 
@@ -21,6 +19,7 @@ const SecondaryContainer = () => {
   const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
   const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
   const horrorMovies = useSelector((store) => store.movies.horrorMovies);
+
   return (
     <div className="relative overflow-auto">
       {/*
@@ -33,19 +32,24 @@ const SecondaryContainer = () => {
       */}
 
       {nowPlayingMovies && (
-        <MovieList title="Dil Hai Hindustani" movies={nowPlayingMovies} />
+        <MovieList
+          title="Dil Hai Hindustani"
+          movies={nowPlayingMovies}
+          count={6}
+        />
       )}
-      {latestMovies && <MovieList title="Popular" movies={latestMovies} />}
+      {latestMovies && (
+        <MovieList title="Popular" movies={latestMovies} count={15} />
+      )}
       {topRatedMovies && (
-        <div className="relative -z-1">
-
-          <MovieList title="Top Rated" movies={topRatedMovies} />
-        </div>
+        <MovieList title="Top Rated" movies={topRatedMovies} count={24} />
       )}
-      {upcomingMovies && <MovieList title="Upcoming" movies={upcomingMovies} />}
+      {upcomingMovies && (
+        <MovieList title="Upcoming" movies={upcomingMovies} count={33} />
+      )}
       {horrorMovies && (
         <div className="mb-80">
-          <MovieList title="Horror" movies={horrorMovies} />
+          <MovieList title="Horror" movies={horrorMovies} count={42} />
         </div>
       )}
     </div>

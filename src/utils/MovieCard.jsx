@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TMDB_MOVIE_POSTER } from "./constant/constants";
+import { TMDB_MOVIE_POSTER, YOUTUBE_EMBED_URL } from "./constant/constants";
 import movie_bg from "../assets/Prime_Video_logo.avif";
 import { Check, Info, Play, Plus } from "lucide-react";
 import {
@@ -8,6 +8,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../components/ui/tooltip";
+import { useSelector } from "react-redux";
+import useMovieTrailer from "./hooks/useMovieTrailer";
 
 const MovieCard = ({
   posterPath,
@@ -19,23 +21,41 @@ const MovieCard = ({
   setShowInfo,
   showInfo,
   index,
+  movieId,
+  currentIndex,
 }) => {
+  const trailer = useSelector((store) => store.movies?.trailerVideo);
+  useMovieTrailer(movieId);
   return (
     <div
       onMouseOver={() => setShowInfo(index)}
       onMouseLeave={() => setShowInfo(-1)}
-      className={`transition-transform shadow-lg transform relative hover:scale-125 hover:zoom-in-150 ${
+      className={`transition-transform transform relative hover:scale-125 hover:zoom-in-150 ${
         showInfo === index && "z-40"
       }`}
     >
       <div className="w-60 cursor-pointer relative">
-        <img
-          src={posterPath ? TMDB_MOVIE_POSTER + posterPath : movie_bg}
-          alt="movie-card"
-          className={`rounded-lg ${
-            !index === showInfo ? "rounded-t-lg" : "rounded-b-none"
-          }`}
-        />
+        {showInfo !== index ? (
+          <img
+            src={posterPath ? TMDB_MOVIE_POSTER + posterPath : movie_bg}
+            alt="movie-card"
+            className={`rounded-lg ${
+              index === showInfo ? "rounded-t-lg rounded-b-none" : "rounded-lg"
+            }`}
+          />
+        ) : (
+          <iframe
+            className="relative z-50 w-full aspect-video zoom-in-125"
+            src={
+              YOUTUBE_EMBED_URL +
+              trailer[currentIndex + index]?.key +
+              `?showinfo=0&autoplay=1&mute=1&controls=0&loop=1&rel=0&autohide=1&start=5`
+            }
+            title="video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+            loading="lazy"
+          ></iframe>
+        )}
         <div className="text-gray-200 text-center text-lg font-mono absolute bottom-3 right-2">
           {logo ? (
             <img src={TMDB_MOVIE_POSTER + logo} alt={title} className="w-28" />
@@ -81,7 +101,7 @@ const MovieCard = ({
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="text-lg">Watchlist </p>
+                    <p className="text-md">Watchlist </p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -93,7 +113,7 @@ const MovieCard = ({
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="text-lg">Details</p>
+                    <p className="text-md">Details</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>

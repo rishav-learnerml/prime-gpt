@@ -3,7 +3,7 @@ import SecondaryContainer from "../components/SecondaryContainer";
 import Footer from "../utils/Footer";
 
 const Browse = () => {
-  //fetches now playing movies and updates the store
+
 
   return (
     <div>

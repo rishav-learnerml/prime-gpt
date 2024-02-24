@@ -16,7 +16,7 @@ const Header = () => {
   useAuthChecker();
 
   return (
-    <nav className="bg-slate-950 py-2 sticky top-3 z-10 w-[80%] mx-auto rounded-lg">
+    <nav className="bg-slate-950 py-2 sticky top-3 w-[80%] mx-auto rounded-lg z-50">
       <div className="flex justify-center">
         <div className="w-13 pr-10 pt-1">
           <Link to={userDetails?"/browse":"/"}>

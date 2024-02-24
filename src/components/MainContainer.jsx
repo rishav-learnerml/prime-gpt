@@ -13,11 +13,14 @@ import {
 import { useEffect, useState } from "react";
 import { Circle } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
+import useNowPlayingMovies from "../utils/hooks/useNowPlayingMovies";
 
 const MainContainer = () => {
   const [api, setApi] = useState();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+
+  useNowPlayingMovies();
 
   useEffect(() => {
     if (!api) {
