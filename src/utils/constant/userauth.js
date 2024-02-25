@@ -89,6 +89,7 @@ export const userSignOut = () => {
     .then(() => {
       // Sign-out successful.
       console.log("Sign-out successful.");
+      
     })
     .catch((error) => {
       console.log("Sign-out unsuccessful.");

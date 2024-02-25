@@ -29,7 +29,7 @@ const MovieList = ({ title, movies, count }) => {
           >
             <CarouselContent>
               {title === "Dil Hai Hindustani"
-                ? movies?.slice(6,15)?.map((movie, index) => {
+                ? movies?.slice(6, 20)?.map((movie, index) => {
                     return (
                       <CarouselItem
                         key={index}
@@ -55,7 +55,7 @@ const MovieList = ({ title, movies, count }) => {
                       </CarouselItem>
                     );
                   })
-                : movies?.slice(0,9).map((movie, index) => {
+                : movies?.slice(0, 14)?.map((movie, index) => {
                     return (
                       <CarouselItem
                         key={index}

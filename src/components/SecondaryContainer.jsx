@@ -4,8 +4,10 @@ import useLatestMovies from "../utils/hooks/useLatestMovies";
 import useTopRated from "../utils/hooks/useTopRated";
 import useUpcoming from "../utils/hooks/useUpcoming";
 import useHorrorMovies from "../utils/hooks/useHorrorMovies";
+import { useRef } from "react";
 
 const SecondaryContainer = () => {
+  const count = useRef(0);
   //subscribing to store --> only what is required
   useLatestMovies();
   useTopRated();
@@ -39,17 +41,17 @@ const SecondaryContainer = () => {
         />
       )}
       {latestMovies && (
-        <MovieList title="Popular" movies={latestMovies} count={15} />
+        <MovieList title="Popular" movies={latestMovies} count={20} />
       )}
       {topRatedMovies && (
-        <MovieList title="Top Rated" movies={topRatedMovies} count={24} />
+        <MovieList title="Top Rated" movies={topRatedMovies} count={34} />
       )}
       {upcomingMovies && (
-        <MovieList title="Upcoming" movies={upcomingMovies} count={33} />
+        <MovieList title="Upcoming" movies={upcomingMovies} count={48} />
       )}
       {horrorMovies && (
         <div className="mb-80">
-          <MovieList title="Horror" movies={horrorMovies} count={42} />
+          <MovieList title="Horror" movies={horrorMovies} count={62} />
         </div>
       )}
     </div>

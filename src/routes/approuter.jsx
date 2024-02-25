@@ -7,6 +7,7 @@ import ErrorPage from "../pages/ErrorPage";
 const LandingPage = lazy(() => import("../pages/LandingPage"));
 const Login = lazy(() => import("../pages/Login"));
 const Browse = lazy(() => import("../pages/Browse"));
+const SearchPage = lazy(() => import("../pages/SearchPage"));
 
 export const approuter = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ export const approuter = createBrowserRouter([
         element: (
           <Suspense fallback={<Shimmer />}>
             <Browse />
+          </Suspense>
+        ),
+      },
+      {
+        path: "search",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <SearchPage />
           </Suspense>
         ),
       },
