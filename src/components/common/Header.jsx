@@ -53,7 +53,7 @@ const Header = () => {
                       <Search />
                     </div>
                   </TooltipTrigger>
-                  <TooltipContent  className="hover:bg-sky-400 hover:text-white">
+                  <TooltipContent className="hover:bg-sky-400 hover:text-white">
                     <p className="text-lg">GPT Search </p>
                   </TooltipContent>
                 </Tooltip>
@@ -67,12 +67,12 @@ const Header = () => {
               "Try for free"
             )}
           </li>
-          <li>
-            <Dropdown
+          <li className="w-32">
+            {/* <Dropdown
               name={selectedLang}
               values={dropdownValues.Lang}
               onLanguageChange={setSelectedLang}
-            />
+            /> */}
           </li>
           <li>
             {userDetails ? (

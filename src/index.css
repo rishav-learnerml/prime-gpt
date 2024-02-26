@@ -15,4 +15,41 @@ html {
   margin-right: 10%;
 }
 
+/* hide google translate default banner
+ */
 
+.goog-te-banner-frame {
+  display: none;
+  height: 0 limportant;
+  visibility: hidden;
+}
+#google_translate_element {
+  /* display: none; */
+  position: fixed;
+  right: 280px;
+  top: 7%;
+  z-index: 100;
+}
+.goog-te-gadget {
+  color: transparent !important;
+}
+.goog-te-gadget > span {
+  display: none !important;
+}
+.goog-te-combo {
+  display: flex;
+  font-size: 17px;
+  background: transparent;
+  color: #b7b4b4;
+  font-weight: 600;
+  border-radius: 6px;
+  padding-left: 10%;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+
+.skiptranslate {
+  margin-top: -38px;
+}

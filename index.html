@@ -4,10 +4,72 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/amazon_prime_video-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="//translate.google.com/#en/hi/hello"
+    ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <title>Prime-GPT | Stream Smart</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            includedLanguages: "en,hi,bn,te",
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+          },
+          "google_translate_element"
+        );
+      }
+
+      function triggerHtmlEvent(element, eventName) {
+        var event;
+        if (document.createEvent) {
+          event = document.createEvent("HTMLEvents");
+          event.initEvent(eventName, true, true);
+          element.dispatchEvent(event);
+        } else {
+          event = document.createEventObject();
+          event.eventType = eventName;
+          element.fireEvent("on" + event.eventType, event);
+        }
+      }
+
+      $(document).ready(function () {
+        $(document).on("click", "languageOption", function () {
+          var vasue = $(this).attr("data-lang");
+          updateLanguage(value);
+        });
+
+        function updateLanguage(value) {
+          var selectIndex = 0;
+          var a = document.querySelector("#google_translate_element select");
+          switch (value) {
+            case "en":
+              selectIndex = 0;
+              break;
+            case "hi":
+              selectIndex = 3;
+              break;
+            case "bn":
+              selectIndex = 1;
+              break;
+            case "te":
+              selectIndex = 2;
+              break;
+          }
+          a.selectedIndex = selectIndex;
+          a.dispatchEvent(new Event("change"));
+        }
+      });
+    </script>
+
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
   </body>
 </html>
