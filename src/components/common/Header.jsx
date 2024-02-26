@@ -67,13 +67,13 @@ const Header = () => {
               "Try for free"
             )}
           </li>
-          <li className="w-32">
-            {/* <Dropdown
+          {/* <li className="w-32"> */}
+          {/* <Dropdown
               name={selectedLang}
               values={dropdownValues.Lang}
               onLanguageChange={setSelectedLang}
             /> */}
-          </li>
+          {/* </li> */}
           <li>
             {userDetails ? (
               <div className="flex">

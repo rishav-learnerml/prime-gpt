@@ -32,3 +32,8 @@ export const TMDB_MOVIE_HORROR = "&with_genres=27";
 export const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/";
 export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/original";
 export const TMDB_MOVIE_CARD = "https://image.tmdb.org/t/p/w500";
+export const gptQuery =
+  "Act as a Movie Recommendation system and suggest some movies for the given query. only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Nun2, Sholay, Gadar2, Koi Mil Gaya, Golmal Returns. Query: ";
+
+export const DUMMY_GPT_RESULTS =
+  "Andaz Apna Apna, Chupke Chupke, Biwi No.1, Hera Pheri, Munna Bhai MBBS";

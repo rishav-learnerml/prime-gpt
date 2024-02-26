@@ -5,7 +5,6 @@ function App() {
   return (
     <>
       <div id="google_translate_element"></div>
-
       <RouterProvider router={approuter} />
     </>
   );

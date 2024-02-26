@@ -26,7 +26,7 @@ html {
 #google_translate_element {
   /* display: none; */
   position: fixed;
-  right: 280px;
+  right: 80px;
   top: 7%;
   z-index: 100;
 }
