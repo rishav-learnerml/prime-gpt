@@ -3,9 +3,11 @@ import {
   API_OPTIONS,
   DUMMY_GPT_RESULTS,
   TMDB_MOVIE_SEARCH,
+  gptQuery,
 } from "../utils/constant/constants";
 import { useDispatch } from "react-redux";
 import { addGptMovieResult } from "../store/gptSlice";
+import openai from "../utils/constant/openai";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ const GptSearchBar = () => {
 
       //only use openAI during final testing
 
-      // await openai.chat.completions.create({
+      // const gptResults = await openai.chat.completions.create({
       //   messages: [{ role: "user", content: gptQuery + searchText }],
       //   model: "gpt-3.5-turbo",
       // }); //only use when needed, it costs a lot!!!
@@ -58,7 +60,7 @@ const GptSearchBar = () => {
       console.error("openai error", error);
     }
   };
-  
+
   return (
     <div className="pt-[10%] flex justify-center">
       <form className="w-1/2 grid grid-cols-12" onSubmit={handleGptSearch}>

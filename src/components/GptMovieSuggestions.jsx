@@ -10,8 +10,13 @@ const GptMovieSuggestions = () => {
   return (
     <div className="p-4 m-4 bg-transparent text-white">
       <div className="my-2 text-4xl text-center">Prime-GPT Recommends</div>
-      {movieNames.map((movieName,index) => (
-        <MovieList title={movieName} movies={movieResults[index]} key={movieName} count={movieResults[index].length}/>
+      {movieNames.map((movieName, index) => (
+        <MovieList
+          title={movieName}
+          movies={movieResults[index]}
+          key={movieName}
+          count={movieResults[index].length}
+        />
       ))}
     </div>
   );

@@ -38,5 +38,4 @@ export const TMDB_MOVIE_SEARCH = (movieName) =>
 export const gptQuery =
   "Act as a Movie Recommendation system and suggest some movies for the given query. only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Nun2, Sholay, Gadar2, Koi Mil Gaya, Golmal Returns. Query: ";
 
-export const DUMMY_GPT_RESULTS =
-  "Andaz Apna Apna, Chupke Chupke, Biwi No.1, Hera Pheri, Munna Bhai MBBS";
+export const DUMMY_GPT_RESULTS = "Raaz, Bhool Bhulaiyaa, 1920, Pari, Stree";
