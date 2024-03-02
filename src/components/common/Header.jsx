@@ -22,9 +22,9 @@ const Header = () => {
   useAuthChecker();
 
   return (
-    <nav className="bg-slate-950 py-2 sticky top-3 w-[80%] mx-auto rounded-lg z-50">
-      <div className="flex justify-center">
-        <div className="w-13 pr-10 pt-1">
+    <nav className="bg-slate-950 py-2 sticky top-3 w-[85%] mx-auto rounded-lg z-50">
+      <div className="flex justify-center pe-32">
+        <div className="w-13 pr-8 pt-1">
           <Link to={userDetails ? "/browse" : "/"}>
             <img
               src="https://m.media-amazon.com/images/G/01/digital/video/web/Logo-min.png"

@@ -26,3 +26,4 @@ dist-ssr
 # Secret Creds
 
 src/credentials
+.env

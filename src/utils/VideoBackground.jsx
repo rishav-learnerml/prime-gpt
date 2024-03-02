@@ -13,7 +13,7 @@ const VideoBackground = ({ movieId, currentIndex, videoIndex }) => {
         className="w-screen h-full ps-[37%] md:ps-[25%] aspect-auto scale-125 md:scale-150"
         src={
           YOUTUBE_EMBED_URL +
-          trailer[videoIndex]?.key +
+          trailer?.[movieId]?.key +
           `?showinfo=0&autoplay=${
             currentIndex === videoIndex
           }&mute=1&controls=0&loop=1&rel=0&autohide=1&start=5`

@@ -72,6 +72,7 @@ const MainContainer = () => {
                   className={`p-1 ml-5 ${current !== index && "opacity-30"}`}
                 >
                   <VideoTitle
+                    movieId={id}
                     title={title}
                     language={original_language}
                     isAdult={adult}
@@ -93,7 +94,7 @@ const MainContainer = () => {
         <CarouselNext />
       </Carousel>
       <div className="py-5 text-center flex justify-center text-sm text-muted-foreground gap-4">
-        {Array.from({ length: count }).map((_, index) =>
+        {Array.from({ length: trailerMovies?.length || 6 }).map((_, index) =>
           index === current ? (
             <Circle size={10} fill="#ffffff" key={index} />
           ) : (

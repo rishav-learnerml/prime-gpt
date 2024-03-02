@@ -26,6 +26,7 @@ const MovieCard = ({
 }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
   useMovieTrailer(movieId);
+
   return (
     <div
       onMouseOver={() => setShowInfo(index)}
@@ -48,7 +49,7 @@ const MovieCard = ({
             className="relative z-50 w-full aspect-video zoom-in-125"
             src={
               YOUTUBE_EMBED_URL +
-              trailer[currentIndex + index]?.key +
+              trailer?.[movieId]?.key +
               `?showinfo=0&autoplay=1&mute=1&controls=0&loop=1&rel=0&autohide=1&start=5`
             }
             title="video"

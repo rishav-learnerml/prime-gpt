@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const VideoTitle = ({
+  movieId,
   title,
   language,
   isAdult,
@@ -18,10 +19,10 @@ const VideoTitle = ({
   currentIndex,
 }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
-  const isTrailerAvailable = trailer[currentIndex]?.name;
-  const movieLogo = trailer[currentIndex]?.movie_logo ? (
+  const isTrailerAvailable = trailer?.[movieId]?.name;
+  const movieLogo = trailer?.[movieId]?.movie_logo ? (
     <img
-      src={TMDB_MOVIE_POSTER + trailer[currentIndex]?.movie_logo}
+      src={TMDB_MOVIE_POSTER + trailer?.[movieId]?.movie_logo}
       alt={title}
       className="w-72 md:max-h-[120px] lg:max-w-[80%]"
     />

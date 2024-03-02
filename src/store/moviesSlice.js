@@ -5,7 +5,7 @@ const moviesSlice = createSlice({
   initialState: {
     nowPlayingMovies: [],
     latestMovies: [],
-    trailerVideo: [],
+    trailerVideo: null,
     topRatedMovies: [],
     upcomingMovies: [],
     horrorMovies: [],
@@ -27,7 +27,11 @@ const moviesSlice = createSlice({
       state.horrorMovies.push(action.payload);
     },
     addTrailerVideo: (state, action) => {
-      state.trailerVideo.push(action.payload);
+      const { id: movieId } = action.payload;
+      state.trailerVideo = {
+        ...state.trailerVideo,
+        [movieId]: { ...action.payload },
+      };
     },
   },
 });
