@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TMDB_MOVIE_POSTER, YOUTUBE_EMBED_URL } from "./constant/constants";
 import movie_bg from "../assets/Prime_Video_logo.avif";
-import { Check, Info, Play, Plus } from "lucide-react";
+import { Check, Info, Play, Plus, ShoppingBagIcon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -10,6 +10,7 @@ import {
 } from "../components/ui/tooltip";
 import { useSelector } from "react-redux";
 import useMovieTrailer from "./hooks/useMovieTrailer";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({
   posterPath,
@@ -22,10 +23,9 @@ const MovieCard = ({
   showInfo,
   index,
   movieId,
-  currentIndex,
 }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
-  useMovieTrailer(movieId);
+  useMovieTrailer(movieId, description);
 
   return (
     <div
@@ -46,7 +46,7 @@ const MovieCard = ({
           />
         ) : (
           <iframe
-            className="relative z-50 w-full aspect-video zoom-in-125"
+            className="relative z-50 w-full aspect-auto zoom-in-150 scale-y-150"
             src={
               YOUTUBE_EMBED_URL +
               trailer?.[movieId]?.key +
@@ -65,22 +65,37 @@ const MovieCard = ({
           )}
         </div>
       </div>
-      <div className={`absolute z-50`}>
+      <Link className={`absolute z-50`} to={`/browse/${movieId}`}>
         {index === showInfo && (
           <div className="px-5 py-5 shadow-lg bg-black w-60">
             <div className="text-white">
-              <span className="flex text-sm">
-                <Check
-                  size={18}
-                  strokeWidth={5}
-                  color="#000000"
-                  className="bg-sky-500 rounded-full p-1 me-2 mt-[1%]"
-                />
-                Included with Prime
-              </span>
+              {trailer?.[movieId]?.key ? (
+                <span className="flex text-lg">
+                  <Check
+                    size={20}
+                    strokeWidth={5}
+                    color="#000000"
+                    className="bg-sky-500 rounded-full p-1 me-2 mt-1"
+                  />
+                  Included with Prime
+                </span>
+              ) : (
+                <span className="flex text-lg">
+                  <ShoppingBagIcon
+                    size={25}
+                    strokeWidth={2}
+                    color="#fbbf24"
+                    className="me-2"
+                  />
+                  Available to rent
+                </span>
+              )}
             </div>
             <div className="flex mt-4">
-              <div className="bg-white rounded-full w-fit p-4 hover:scale-105 hover:opacity-90 cursor-pointer">
+              <Link
+                to={`/play/${movieId}`}
+                className="bg-white rounded-full w-fit p-4 hover:scale-105 hover:opacity-90 cursor-pointer"
+              >
                 <Play
                   size={24}
                   color="#000000"
@@ -88,7 +103,7 @@ const MovieCard = ({
                   fill="#000000"
                   className="color-black ps-1"
                 />
-              </div>
+              </Link>
 
               <div className="ps-5 text-sm flex items-center text-white">
                 Play Trailer
@@ -134,7 +149,7 @@ const MovieCard = ({
             </div>
           </div>
         )}
-      </div>
+      </Link>
     </div>
   );
 };

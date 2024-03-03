@@ -4,11 +4,13 @@ import {
   TMDB_URL,
   TMDB_MOVIE_LATEST,
 } from "../constant/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addLatestMovies } from "../../store/moviesSlice";
 import getMoviePoster from "../constant/getMoviePoster";
 
 const useLatestMovies = () => {
+  //memoization
+  const latestMovies = useSelector((store) => store.movies.latestMovies);
   //fetch data from tmdb api and update store
   const dispatch = useDispatch();
   //api call
@@ -25,7 +27,7 @@ const useLatestMovies = () => {
   };
 
   useEffect(() => {
-    getLatestMovies();
+    if (!latestMovies?.length) getLatestMovies();
   }, []);
 };
 

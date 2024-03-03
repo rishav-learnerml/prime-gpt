@@ -4,11 +4,13 @@ import {
   TMDB_URL,
   TMDB_MOVIE_TOP_RATED,
 } from "../constant/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addTopRatedMovies } from "../../store/moviesSlice";
 import getMoviePoster from "../constant/getMoviePoster";
 
 const useTopRated = () => {
+  //memoization
+  const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
   //fetch data from tmdb api and update store
   const dispatch = useDispatch();
   //api call
@@ -25,7 +27,7 @@ const useTopRated = () => {
   };
 
   useEffect(() => {
-    getTopRatedMovies();
+    if (!topRatedMovies?.length) getTopRatedMovies();
   }, []);
 };
 

@@ -1,10 +1,15 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS, TMDB_URL, TRAILER_CONFIG } from "../constant/constants";
 import { addTrailerVideo } from "../../store/moviesSlice";
 import { useEffect } from "react";
 import getMoviePoster from "../constant/getMoviePoster";
 
-const useMovieTrailer = (movieId) => {
+const useMovieTrailer = (movieId, description) => {
+  //memoization
+  const movieTrailer = useSelector(
+    (store) => store.movies.trailerVideo?.[movieId]
+  );
+
   if (!movieId) return;
   const dispatch = useDispatch();
   //fetches the trailer video
@@ -27,6 +32,7 @@ const useMovieTrailer = (movieId) => {
       const trailerwithMovieId = {
         ...trailer,
         id: movieId,
+        description,
       };
 
       getMoviePoster(dispatch, trailerwithMovieId, addTrailerVideo);
@@ -36,7 +42,7 @@ const useMovieTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    getMovieTrailer();
+    if (!movieTrailer?.length) getMovieTrailer();
   }, []);
 };
 

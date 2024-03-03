@@ -8,6 +8,8 @@ const LandingPage = lazy(() => import("../pages/LandingPage"));
 const Login = lazy(() => import("../pages/Login"));
 const Browse = lazy(() => import("../pages/Browse"));
 const SearchPage = lazy(() => import("../pages/SearchPage"));
+const MovieDetailsPage = lazy(() => import("../components/MoviePlayer"));
+const PlayMovie = lazy(() => import("../components/MovieBackground"));
 
 export const approuter = createBrowserRouter([
   {
@@ -38,6 +40,22 @@ export const approuter = createBrowserRouter([
         element: (
           <Suspense fallback={<Shimmer />}>
             <Browse />
+          </Suspense>
+        ),
+      },
+      {
+        path: "browse/:id",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <MovieDetailsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "play/:id",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <PlayMovie allowControls="1" />
           </Suspense>
         ),
       },

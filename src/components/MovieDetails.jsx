@@ -1,26 +1,38 @@
-import { Star, Check, Play, Info, Plus, ShoppingBagIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { TMDB_MOVIE_POSTER } from "../utils/constant/constants";
+import {
+  Star,
+  Check,
+  Play,
+  Info,
+  Plus,
+  ShoppingBagIcon,
+  Heart,
+} from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../components/ui/tooltip";
-import { TMDB_MOVIE_POSTER } from "./constant/constants";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const VideoTitle = ({
-  movieId,
-  title,
-  language,
-  isAdult,
-  rating,
-  thumbnail,
-  currentIndex,
-}) => {
+const MovieDetails = () => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
+  const { id: movieId } = useParams();
+  if (!trailer?.[movieId]) return;
+
   const isTrailerAvailable = trailer?.[movieId]?.name;
+  const {
+    title,
+    description,
+    vote_average: rating,
+    original_language: language,
+    adult: isAdult,
+    backdrop_path: thumbnail,
+  } = trailer?.[movieId];
+
   const movieLogo = trailer?.[movieId]?.movie_logo ? (
     <img
       src={TMDB_MOVIE_POSTER + trailer?.[movieId]?.movie_logo}
@@ -34,6 +46,7 @@ const VideoTitle = ({
   const [backgroundImage, setBackgroundImage] = useState(
     TMDB_MOVIE_POSTER + thumbnail
   );
+
   //get language name from code
   const languageNames = new Intl.DisplayNames(["en"], {
     type: "language",
@@ -49,14 +62,13 @@ const VideoTitle = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [currentIndex, isTrailerAvailable, thumbnail]);
-
+  }, [isTrailerAvailable, thumbnail]);
   return (
     <div
-      className="px-20 py-10 absolute bg-gradient-to-r from-black from-40% w-screen aspect-video z-10"
+      className="px-20 py-32 absolute bg-gradient-to-r from-black from-10% w-full aspect-video z-10 text-white h-full"
       style={{
         background: `linear-gradient(to right, black ${
-          backgroundImage ? "20%" : "40%"
+          backgroundImage ? "10%" : "20%"
         }, transparent), url(${backgroundImage}) no-repeat center center/cover`,
       }}
     >
@@ -65,8 +77,8 @@ const VideoTitle = ({
           <span className="flex text-lg pe-2">
             <div className="bg-yellow-500 rounded-sm px-1 text-black font-extrabold me-2 ">
               TMDb
-            </div>{" "}
-            {rating?.toFixed(1)}
+            </div>
+            {rating ? rating.toFixed(1) : 7.4}
           </span>
           <Star
             size={15}
@@ -80,8 +92,11 @@ const VideoTitle = ({
           <h1 className="text-6xl mt-5 py-2 rounded-lg mb-1 bg-gradient-to-r from-transparent via-sky-600 to-transparent">
             {movieLogo}
           </h1>
-          <p className="text-center">{languageNames.of(language)}</p>
+          {/* <p className="text-center">{languageNames.of(language)}</p> */}
         </div>
+        <p className="text-xl w-[70%] py-4">
+          {description || "No description available!"}
+        </p>
         <div className="mt-12 lg:mt-6 flex">
           {isTrailerAvailable ? (
             <span className="flex text-lg">
@@ -110,7 +125,10 @@ const VideoTitle = ({
         </div>
         <div className="flex mt-4">
           {isTrailerAvailable ? (
-            <Link to={`/play/${movieId}`} className="bg-white rounded-full w-fit p-4 hover:scale-105 hover:opacity-90 cursor-pointer">
+            <Link
+              to={`/play/${movieId}`}
+              className="bg-white rounded-full w-fit p-4 hover:scale-105 hover:opacity-90 cursor-pointer"
+            >
               <Play
                 size={45}
                 color="#000000"
@@ -143,11 +161,11 @@ const VideoTitle = ({
             <Tooltip>
               <TooltipTrigger>
                 <div className="bg-neutral-700 rounded-full p-3 w-fit h-fit ms-2 cursor-pointer">
-                  <Info size={30} color="#ffffff" strokeWidth={2} />
+                  <Heart size={30} color="#ffffff" strokeWidth={2} />
                 </div>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-lg">Details</p>
+                <p className="text-lg">Add to Favourites</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -157,4 +175,4 @@ const VideoTitle = ({
   );
 };
 
-export default VideoTitle;
+export default MovieDetails;

@@ -5,11 +5,13 @@ import {
   TMDB_MOVIE_TOP_RATED,
   TMDB_MOVIE_UPCOMING,
 } from "../constant/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from "../../store/moviesSlice";
 import getMoviePoster from "../constant/getMoviePoster";
 
 const useUpcoming = () => {
+  //memoization
+  const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
   //fetch data from tmdb api and update store
   const dispatch = useDispatch();
   //api call
@@ -26,7 +28,7 @@ const useUpcoming = () => {
   };
 
   useEffect(() => {
-    getUpcomingMovies();
+    if (!upcomingMovies?.length) getUpcomingMovies();
   }, []);
 };
 

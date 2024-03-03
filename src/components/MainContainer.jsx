@@ -64,13 +64,12 @@ const MainContainer = () => {
               vote_average,
               id,
               backdrop_path,
+              description,
             } = movie;
 
             return (
               <CarouselItem key={id}>
-                <div
-                  className={`p-1 ml-5 ${current !== index && "opacity-30"}`}
-                >
+                <div className={`ml-5 ${current !== index && "opacity-30"}`}>
                   <VideoTitle
                     movieId={id}
                     title={title}
@@ -84,6 +83,7 @@ const MainContainer = () => {
                     movieId={id}
                     currentIndex={current}
                     videoIndex={index}
+                    description={description}
                   />
                 </div>
               </CarouselItem>
