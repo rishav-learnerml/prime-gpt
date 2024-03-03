@@ -17,7 +17,7 @@ const MovieBackground = ({ allowControls = 0 }) => {
         `?showinfo=0&autoplay=1&mute=1&controls=${allowControls}&loop=1&rel=0&autohide=1&start=5`
       }
       title="video"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;"
       loading="lazy"
     ></iframe>
   );

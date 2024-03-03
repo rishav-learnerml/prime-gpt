@@ -20,7 +20,7 @@ html {
 
 .goog-te-banner-frame {
   display: none;
-  height: 0 limportant;
+  height: 0 !important;
   visibility: hidden;
 }
 #google_translate_element {
@@ -29,6 +29,14 @@ html {
   right: 9%;
   top: 7%;
   z-index: 100;
+}
+@media only screen and (max-width: 600px) {
+  #google_translate_element {
+    /* display: none; */
+    position: fixed;
+    top: 12%;
+    z-index: 100;
+  }
 }
 .goog-te-gadget {
   color: transparent !important;

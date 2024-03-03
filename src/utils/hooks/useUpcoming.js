@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import {
   API_OPTIONS,
   TMDB_URL,
-  TMDB_MOVIE_TOP_RATED,
   TMDB_MOVIE_UPCOMING,
 } from "../constant/constants";
 import { useDispatch, useSelector } from "react-redux";

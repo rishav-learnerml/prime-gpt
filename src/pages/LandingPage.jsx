@@ -12,8 +12,8 @@ const LandingPage = () => {
           <Banner {...item} key={item.title} />
         ))}
       </div>
-      <div className="py-4 px-10 flex mx-auto bg-white">
-        <div className="w-[50%] p-5">
+      <div className="py-4 px-10 flex mx-auto bg-white flex-col md:flex-row">
+        <div className="md:w-[50%] p-5">
           <div className="text-5xl font-thin">
             Your favorite channels all in one place
           </div>
@@ -23,7 +23,7 @@ const LandingPage = () => {
             Channels of your choice
           </div>
         </div>
-        <div className="w-[50%] flex flex-wrap justify-center">
+        <div className="md:w-[50%] flex flex-wrap justify-center">
           {cardImgUrls?.map((imgUrl) => (
             <div
               className="p-1 cursor-pointer hover:scale-105 hover:shadow-lg"
@@ -38,9 +38,9 @@ const LandingPage = () => {
         style={{
           background: `url(${FIRE_STICK_BANNER}) no-repeat center center/cover`,
         }}
-        className="text-white pb-[40%] pt-[1%] px-10"
+        className="text-white pb-[40%] pt-[1%] px-10 flex md:block flex-col md:flex-row"
       >
-        <div className="w-[50%] float-end">
+        <div className="md:w-[50%] float-end">
           <div className="text-5xl py-10 font-thin">
             Even better with Fire TV Stick
           </div>

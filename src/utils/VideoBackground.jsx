@@ -13,7 +13,7 @@ const VideoBackground = ({
   useMovieTrailer(movieId, description);
 
   return (
-    <div className="w-screen h-[50vh] text-5xl text-white cursor-pointer aspect-auto overflow-hidden scale-125">
+    <div className="w-screen h-[22vh] md:h-[50vh] text-5xl text-white cursor-pointer aspect-auto overflow-hidden scale-125">
       <iframe
         className="w-screen h-full ps-[37%] md:ps-[25%] aspect-auto scale-125 md:scale-150"
         src={

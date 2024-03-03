@@ -35,7 +35,7 @@ const MovieCard = ({
         showInfo === index && "z-40"
       }`}
     >
-      <div className="w-60 cursor-pointer relative">
+      <div className="w-30 md:w-60 cursor-pointer relative">
         {showInfo !== index ? (
           <img
             src={posterPath ? TMDB_MOVIE_POSTER + posterPath : movie_bg}
@@ -57,7 +57,7 @@ const MovieCard = ({
             loading="lazy"
           ></iframe>
         )}
-        <div className="text-gray-200 text-center text-lg font-mono absolute bottom-3 right-2">
+        <div className="text-gray-200 text-center text-sm md:text-lg font-mono absolute bottom-3 right-2">
           {logo ? (
             <img src={TMDB_MOVIE_POSTER + logo} alt={title} className="w-28" />
           ) : (
@@ -70,22 +70,20 @@ const MovieCard = ({
           <div className="px-5 py-5 shadow-lg bg-black w-60">
             <div className="text-white">
               {trailer?.[movieId]?.key ? (
-                <span className="flex text-lg">
+                <span className="flex text-xs md:text-lg">
                   <Check
-                    size={20}
                     strokeWidth={5}
                     color="#000000"
-                    className="bg-sky-500 rounded-full p-1 me-2 mt-1"
+                    className="bg-sky-500 rounded-full p-1 me-2 md:mt-1 w-4 h-4 md:h-5 md:w-5"
                   />
                   Included with Prime
                 </span>
               ) : (
                 <span className="flex text-lg">
                   <ShoppingBagIcon
-                    size={25}
                     strokeWidth={2}
                     color="#fbbf24"
-                    className="me-2"
+                    className="me-2 md:mt-1 w-4 h-4 md:h-5 md:w-5"
                   />
                   Available to rent
                 </span>
@@ -94,25 +92,24 @@ const MovieCard = ({
             <div className="flex mt-4">
               <Link
                 to={`/play/${movieId}`}
-                className="bg-white rounded-full w-fit p-4 hover:scale-105 hover:opacity-90 cursor-pointer"
+                className="bg-white rounded-full w-10 p-2 h-10 md:w-fit md:h-full md:p-4 hover:scale-105 hover:opacity-90 cursor-pointer"
               >
                 <Play
-                  size={24}
                   color="#000000"
                   strokeWidth={3}
                   fill="#000000"
-                  className="color-black ps-1"
+                  className="color-black ps-1 w-4 md:w-6"
                 />
               </Link>
 
-              <div className="ps-5 text-sm flex items-center text-white">
+              <div className="ps-5 text-sm md:text-xs flex items-center text-white">
                 Play Trailer
               </div>
 
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <div className="bg-neutral-700 rounded-full p-2 w-fit h-fit ms-2 cursor-pointer">
+                    <div className="bg-neutral-700 rounded-full p-2 w-fit h-fit ms-2 cursor-pointer hidden md:block">
                       <Plus size={20} color="#ffffff" strokeWidth={3} />
                     </div>
                   </TooltipTrigger>
@@ -134,7 +131,9 @@ const MovieCard = ({
                 </Tooltip>
               </TooltipProvider>
             </div>
-            <div className="text-white text-lg my-2 font-semibold">{title}</div>
+            <div className="text-white text-sm md:text-lg my-2 font-semibold">
+              {title}
+            </div>
             <div className="text-white text-md my-2 font-semibold mb-1">
               <span className="text-gray-600 pe-4">{releaseDate}</span>
               <span className="bg-gray-700 p-1 text-white text-sm rounded-md">

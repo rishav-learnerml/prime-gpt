@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="mx-auto">
         <img src={LOGO_FOOTER} alt="footer-icn" />
       </div>
-      <div className="flex text-cyan-700 gap-4 justify-center">
+      <div className="flex text-cyan-700 gap-4 justify-center flex-col text-center md:flex-row">
         <div>Terms and Privacy Notice</div>
         <div>Send us Feedback</div>
         <div>Help</div>

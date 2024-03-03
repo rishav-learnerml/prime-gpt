@@ -18,14 +18,16 @@ const MovieList = ({ title, movies, count }) => {
   return (
     <div className="mb-10 mx-16">
       <div className="hover:relative hover:z-10">
-        <h1 className="text-white font-semibold text-xl py-4">{title}</h1>
+        <h1 className="text-white font-semibold text-lg md:text-xl py-4">
+          {title}
+        </h1>
         <div className="hide-scroll">
           <Carousel
             opts={{
               align: "start",
               // loop: true,
             }}
-            className="w-full h-[20vh] overflow-visible"
+            className="w-full h-[40vh] md:h-[20vh] overflow-visible"
           >
             <CarouselContent>
               {title === "Dil Hai Hindustani"

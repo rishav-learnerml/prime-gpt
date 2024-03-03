@@ -58,7 +58,7 @@ const Login = () => {
         </Link>
       </div>
       <form
-        className="flex flex-col rounded-md w-4/12 p-12 bg-black bg-opacity-80 my-24 mx-auto text-white"
+        className="flex flex-col rounded-md md:w-4/12 p-12 bg-black bg-opacity-80 my-24 mx-auto text-white"
         onSubmit={handleAuth}
       >
         <h1 className="font-bold text-2xl py-4">
